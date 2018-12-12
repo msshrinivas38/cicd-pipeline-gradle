@@ -1,12 +1,16 @@
-node {
-    checkout scm 
-    /* .. snip .. */
-}
+
 
 pipeline {
   agent any
   stages {
-    stage ('Build') {
+    
+      stage ('Checkout'({
+          echo 'Running checkout'
+          checkout scm
+          
+      }
+      
+      stage ('Build') {
       steps {
         echo 'Running Build Automation'
         sh './gradlew build --no-daemon'
